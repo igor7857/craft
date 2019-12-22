@@ -10,13 +10,31 @@
 </head>
 <body>
 	<h2>Калькулятор крафта</h2>
-    <div id="form_1" class="forma">
-        <p>дни</p>
-        <input class="time" type="number" id="i_дни" min="1" max="20" oninput="tt()">
-        <p>часы</p>
-        <input class="time" type="number" id="i_часы" min="1" max="24" oninput="tt()">
-        <p>минуты</p>
-        <input class="time" type="number" id="i_минуты" min="1" max="60" oninput="tt()">
+    <div class="forma">
+        <div class="forma1o">
+            <p>дни</p>
+            <p>часы</p>
+            <p>минуты</p>
+        </div>
+        <div class="forma2o">
+            <button onclick="op('i_дни', -1, 14, 0)">-1</button>
+            <input class="time" type="number" id="i_дни" min="1" max="14" oninput="tt()">
+            <button onclick="op('i_дни', 1, 14, 0)">+1</button>
+            <br>
+            <button onclick="op('i_часы', -5, 23, 0)">-5</button>
+            <button onclick="op('i_часы', -1, 23, 0)">-1</button>
+            <input class="time" type="number" id="i_часы" min="1" max="24" oninput="tt()">
+            <button onclick="op('i_часы', 1, 23, 0)">+1</button>
+            <button onclick="op('i_часы', 5, 23, 0)">+5</button>
+            <br>
+            <button onclick="op('i_минуты', -10, 59, 0)">-10</button>
+            <button onclick="op('i_минуты', -5, 59, 0)">-5</button>
+            <input class="time" type="number" id="i_минуты" min="1" max="60" oninput="tt()">
+            <button onclick="op('i_минуты', 5, 59, 0)">+5</button>
+            <button onclick="op('i_минуты', 10, 59, 0)">+10</button>
+        </div>
+        
+        
     </div>
     <div class="forma">
         <p>Очередь</p>
@@ -92,6 +110,15 @@
             a = a*100;
             return a;
         }
+        
+        function op (i, n, max, temp){
+            temp = Number(document.getElementById(i).value);
+            document.getElementById(i).value = n+temp;
+            if (document.getElementById(i).value < 0) {document.getElementById(i).value = 0};
+            if (document.getElementById(i).value >= max) {document.getElementById(i).value = max};
+            tt()
+        }
+        
     </script>
 </body>
 </html>
