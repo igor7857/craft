@@ -3,7 +3,7 @@
 }
 body {
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 350px;
 	min-width: 300px;
 }
 h2{
@@ -15,37 +15,33 @@ h2{
 	border: 2px solid #999999;
 	padding: 10px;
 	margin: 10px;
-    max-width: 500px;
+    max-width: 350px;
 	min-width: 300px;
 }
 .forma1o{
-    text-align: center;
+    text-align: left;
     background: #ecedee;
-    display: inline-block;
-    width: 100px;
-}
-.forma2o{
-    text-align: center;
-    background: #ecedee;
-    display: inline-block;
-    width: 180px;
+	border: 2px solid #999999;
+	padding: 10px;
+	margin: 10px;
+    max-width: 350px;
+	min-width: 300px;
 }
 .forma1o p{
     margin-top: 11px;
 }
 button{
-    width: 25px;
-    height: 25px;
+    width: 27px;
+    height: 27px;
 }
 .time{
-    height: 22px;
     width: 25%;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 input{
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
 }
 p{
     font-size: 20px;
