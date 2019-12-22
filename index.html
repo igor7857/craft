@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="height=device-height, initial-scale=1.0">
+ 	<title>Калькулятор лавки</title>
+ 	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h2>Калькулятор крафта</h2>
+    <div id="form_1" class="forma">
+        <p>дни</p>
+        <input class="time" type="number" id="i_дни" min="1" max="20" oninput="tt()">
+        <p>часы</p>
+        <input class="time" type="number" id="i_часы" min="1" max="24" oninput="tt()">
+        <p>минуты</p>
+        <input class="time" type="number" id="i_минуты" min="1" max="60" oninput="tt()">
+    </div>
+    <div class="forma">
+        <p>Очередь</p>
+        <input type="radio" name="очередь" id="r_pay" oninput="tt()">
+        <label for="r_pay">платная</label>
+        <br>
+        <input type="radio" name="очередь" id="r_free" checked oninput="tt()">
+        <label for="r_free">бесплатная</label>
+    <br>
+    <br>
+        <input type="checkbox" id="i_chb_speed" oninput="tt()">
+        <label for="i_chb_speed">докупить лиц на скорость</label>
+        <br>
+        <input type="checkbox" id="i_chb_pk" oninput="tt()">
+        <label for="i_chb_pk">задача с перекрафта</label>
+    </div>
+    <div class="forma">
+        <p>Доплатить</p>
+        <p id="vRub">руб</p>
+        <p id="vGold">голд</p>
+    </div>
+    <script>
+        tt();
+        function tt(){
+            let дни = document.getElementById("i_дни").value;
+            if (дни.length == 0) {дни = 0};
+            let часы = document.getElementById("i_часы").value;
+            if (часы.length == 0) {часы = 0};
+            let минуты = document.getElementById("i_минуты").value;
+            if (минуты.length == 0) {минуты = 0};
+            let free = document.getElementById("r_free");
+            let pay = document.getElementById("r_pay");
+            let chb_speed = document.getElementById("i_chb_speed");
+            let chb_pk = document.getElementById("i_chb_pk");
+            let kurs = 400;
+            let rub = 0;
+            let gold = 0;
+            let time_hour = 0;
+            
+            if (free.checked) {
+                gold = 0;
+                document.getElementById("vGold").innerHTML = gold + " голд";
+            }
+            
+            if (pay.checked) {
+                time_hour = (дни*24) + (часы*1) + (минуты/60);
+                gold = time_hour * kurs;
+                gold = fix_gold(gold);
+                document.getElementById("vGold").innerHTML = gold + " голд";
+            }
+            
+            if (chb_speed.checked) {
+                rub += 2;
+                console.log(rub);
+                document.getElementById("vRub").innerHTML = rub + " руб";
+                gold = gold / 100 * 70;
+                gold = fix_gold(gold);
+                document.getElementById("vGold").innerHTML = gold + " голд";
+            }
+            else {
+                document.getElementById("vRub").innerHTML = rub + " руб";
+            }
+            
+            if (chb_pk.checked) {
+                rub += 10;
+                document.getElementById("vRub").innerHTML = rub + " руб";
+            }
+        }
+        
+        function fix_gold(a) {
+            a = a / 100;
+            a = Math.floor(a);
+            a = a*100;
+            return a;
+        }
+    </script>
+</body>
+</html>
