@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="height=device-height, initial-scale=1.0">
+ 	<title>Очередь</title>
+ 	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="div1" class="forma">
+        <h2>Сервер</h2>
+        <button onclick="op('div1', 'div2', 'i_сервер', 'am')">Амбер</button>
+        <button onclick="op('div1', 'div2', 'i_сервер', 'tp')">Топаз</button>
+        <button onclick="op('div1', 'div2', 'i_сервер', 'rb')">Руби</button>
+    </div>
+	
+    <div id="div2" style="display: none" class="forma">
+        <h2>Сторона</h2>
+        <button onclick="op('div2', 'div3', 'i_сторона', 'uhi')">Уши</button>
+        <button onclick="op('div2', 'div3', 'i_сторона', 'gori')">Горы</button>
+    </div>
+    
+    <div id="div3" style="display: none" class="forma">
+        <h2>Крафт</h2>
+        <button onclick="op('div4', 'div4', 'i_крафт', 'cloaks')">Плащи</button>
+    </div>
+	
+	<div id="div4" class="forma">
+        <p><input type="text" id="i_сервер"> / <input type="text" id="i_сторона"> / <input type="text" id="i_крафт"></p>
+        <button onclick="test()">GO</button>
+    </div>
+	<script>
+		let am
+		function test(){
+			let сервер = document.getElementById("i_сервер").value;
+			let сторона = document.getElementById("i_сторона").value;
+			let крафт = document.getElementById("i_крафт").value;
+			location.href="https://igor7857.github.io/craft/priority/" + сервер + "/" + сторона + "/" + крафт;
+		}
+		function op (hid, vis, i, s){
+			document.getElementById(hid).style.display = 'none';
+			document.getElementById(vis).style.display = 'block';
+			document.getElementById(i).value = s;
+		}
+	</script>
+</body>
+</html>
