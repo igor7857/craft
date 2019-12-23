@@ -30,6 +30,8 @@ p{
 button{
 	font-size: 16px;
 	width: 80px;
+	margin-right: 4px;
+	margin-left: 4px;
 }
 
 .n{

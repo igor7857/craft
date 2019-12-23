@@ -29,11 +29,10 @@
 	
 	<div id="div4" class="forma">
         <p><input type="text" id="i_сервер"> / <input type="text" id="i_сторона"> / <input type="text" id="i_крафт"></p>
-        <button class="n" style="margin-right: 4px;" onclick="reset()">Сброс</button>
-        <button class="n" style="margin-left: 4px;" onclick="result()">Далее</button>
+        <button class="n" onclick="reset()">Сброс</button>
+        <button class="n" onclick="result()">Далее</button>
     </div>
 	<script>
-		reset();
 		function reset(){
 			document.getElementById("div1").style.display = 'block';
 			document.getElementById("div2").style.display = 'none';
