@@ -44,14 +44,13 @@
     <br>
     <br>
         <input type="checkbox" id="i_chb_speed" oninput="tt()">
-        <label for="i_chb_speed">докупить лиц на скорость</label>
+        <label for="i_chb_speed">своя лиц на скорость</label>
         <br>
         <input type="checkbox" id="i_chb_pk" oninput="tt()">
-        <label for="i_chb_pk">задача с перекрафта</label>
+        <label for="i_chb_pk">задача с перекрафта (+10к голд)</label>
     </div>
     <div class="forma">
         <p>Доплатить</p>
-        <p id="vRub">руб</p>
         <p id="vGold">голд</p>
     </div>
     <script>
@@ -68,37 +67,38 @@
             let chb_speed = document.getElementById("i_chb_speed");
             let chb_pk = document.getElementById("i_chb_pk");
             let kurs = 400;
-            let rub = 0;
-            let gold = 0;
+            let gold_of_pk = 0;
+            let gold_of_speed = 0;
+            let gold_of_priority = 0;
             let time_hour = 0;
+            let sum;
             
             if (free.checked) {
-                gold = 0;
-                document.getElementById("vGold").innerHTML = gold + " голд";
+            	gold_of_priority = 0
+            	sum = gold_of_priority + gold_of_speed + gold_of_pk;
+                document.getElementById("vGold").innerHTML = sum + " голд";
             }
             
             if (pay.checked) {
                 time_hour = (дни*24) + (часы*1) + (минуты/60);
-                gold = time_hour * kurs;
-                gold = fix_gold(gold);
-                document.getElementById("vGold").innerHTML = gold + " голд";
+                gold_of_priority = time_hour * kurs;
+                gold_of_priority = fix_gold(gold_of_priority);
+                sum = gold_of_priority + gold_of_speed + gold_of_pk;
+                document.getElementById("vGold").innerHTML = sum + " голд";
             }
             
             if (chb_speed.checked) {
-                rub += 2;
-                console.log(rub);
-                document.getElementById("vRub").innerHTML = rub + " руб";
-                gold = gold / 100 * 70;
-                gold = fix_gold(gold);
-                document.getElementById("vGold").innerHTML = gold + " голд";
-            }
-            else {
-                document.getElementById("vRub").innerHTML = rub + " руб";
+                document.getElementById("vGold").innerHTML = sum + " голд";
+                gold_of_priority = gold_of_priority / 100 * 70;
+                gold_of_priority = fix_gold(gold_of_priority);
+                sum = gold_of_priority + gold_of_speed + gold_of_pk;
+                document.getElementById("vGold").innerHTML = sum + " голд";
             }
             
             if (chb_pk.checked) {
-                rub += 10;
-                document.getElementById("vRub").innerHTML = rub + " руб";
+                gold_of_pk += 10000;
+                sum = gold_of_priority + gold_of_speed + gold_of_pk;
+                document.getElementById("vGold").innerHTML = sum + " голд";
             }
         }
         
