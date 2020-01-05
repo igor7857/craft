@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h2>Калькулятор крафта</h2>
-    <div class="forma1o">
+    <div id="ftime" class="forma1o" style="display: none;">
         <label for="i_дни">дни</label>
         <br>
         <button onclick="op('i_дни', -1, 14, 0)" style="visibility: hidden;">-1</button>
@@ -74,12 +74,14 @@
             let sum;
             
             if (free.checked) {
+				document.getElementById('ftime').style.display = 'none';
             	gold_of_priority = 0
             	sum = gold_of_priority + gold_of_speed + gold_of_pk;
                 document.getElementById("vGold").innerHTML = sum + " голд";
             }
             
             if (pay.checked) {
+				document.getElementById('ftime').style.display = 'block';
                 time_hour = (дни*24) + (часы*1) + (минуты/60);
                 gold_of_priority = time_hour * kurs;
                 gold_of_priority = fix_gold(gold_of_priority);
