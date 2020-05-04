@@ -47,7 +47,7 @@
         <label for="i_chb_speed">своя лиц на скорость</label>
         <br>
         <input type="checkbox" id="i_chb_pk" oninput="tt()">
-        <label for="i_chb_pk">задача с перекрафта (+10к голд)</label>
+        <label for="i_chb_pk">задача с перекрафта (+7к голд)</label>
     </div>
     <div class="forma">
         <p>Доплатить</p>
@@ -98,7 +98,7 @@
             }
             
             if (chb_pk.checked) {
-                gold_of_pk += 10000;
+                gold_of_pk += 7000;
                 sum = gold_of_priority + gold_of_speed + gold_of_pk;
                 document.getElementById("vGold").innerHTML = sum + " голд";
             }
